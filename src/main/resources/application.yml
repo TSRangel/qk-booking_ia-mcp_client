@@ -1,0 +1,20 @@
+quarkus:
+  langchain4j:
+    ollama:
+      base-url: http://localhost:11434
+      chat-model:
+        model-id: gpt-oss:20b
+      timeout: 120s
+      embedding-model:
+        model-id: nomic-embed-text
+    pgvector:
+      register-vector-pg-extension: true
+      dimension: 768
+      table: travel_embeddings
+      drop-table-first: true
+    log-requests: true
+    log-responses: true
+#    easy-rag:
+#      path: src/main/resources/rag
+#      max-segment-size: 100
+#      max-overlap-size: 20
