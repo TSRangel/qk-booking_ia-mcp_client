@@ -14,6 +14,13 @@ quarkus:
       drop-table-first: true
     log-requests: true
     log-responses: true
+    mcp:
+      booking-server:
+        transport-type: http
+        url: http://localhost:8081/mcp/sse/
+        timeout: 30s
+        log-requests: true
+        log-responses: true
 #    easy-rag:
 #      path: src/main/resources/rag
 #      max-segment-size: 100

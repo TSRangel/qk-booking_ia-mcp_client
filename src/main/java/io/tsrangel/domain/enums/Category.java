@@ -1,6 +1,6 @@
-package io.tsrangel.domain.enums;
-
-public enum Category {
-    ADVENTURE,
-    TREASURE
-}
+//package io.tsrangel.domain.enums;
+//
+//public enum Category {
+//    ADVENTURE,
+//    TREASURE
+//}
