@@ -3,8 +3,13 @@ package io.tsrangel.service.aiServices;
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
+import dev.langchain4j.service.V;
+import dev.langchain4j.service.guardrail.InputGuardrails;
+import dev.langchain4j.service.guardrail.OutputGuardrails;
 import io.quarkiverse.langchain4j.RegisterAiService;
 import io.quarkiverse.langchain4j.mcp.runtime.McpToolBox;
+import io.tsrangel.context.behavior.guardrail.AiOutpuGuardrail;
+import io.tsrangel.context.security.guardrail.AiInputGuardrail;
 
 @RegisterAiService
 public interface PackageExpertWithTemplate {
@@ -18,5 +23,7 @@ public interface PackageExpertWithTemplate {
             """)
     @McpToolBox("booking-server")
     @UserMessage("Do what user is asking {message}. The user used for authentication is {userName}}")
-    String chat(@MemoryId String memoryId, String message, String userName);
+    @InputGuardrails(AiInputGuardrail.class)
+    @OutputGuardrails(AiOutpuGuardrail.class)
+    String chat(@MemoryId String memoryId, @V("message") String message, String userName);
 }
